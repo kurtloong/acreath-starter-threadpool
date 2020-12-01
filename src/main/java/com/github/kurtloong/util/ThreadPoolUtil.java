@@ -1,7 +1,7 @@
-package com.acreath.starter.threadpool.util;
+package com.github.kurtloong.util;
 
-import com.acreath.starter.threadpool.ThreadPoolMonitor;
-import com.acreath.starter.threadpool.queue.ResizeableBlockingQueue;
+import com.github.kurtloong.ThreadPoolMonitor;
+import com.github.kurtloong.queue.ResizeableBlockingQueue;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;

@@ -1,4 +1,4 @@
-package com.acreath.starter.threadpool.queue;
+package com.github.kurtloong.queue;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -982,7 +982,7 @@ public class ResizeableBlockingQueue<E> extends AbstractQueue<E>
      * <p>The {@code Spliterator} reports {@link Spliterator#CONCURRENT},
      * {@link Spliterator#ORDERED}, and {@link Spliterator#NONNULL}.
      *
-     * @implNote
+     *
      * The {@code Spliterator} implements {@code trySplit} to permit limited
      * parallelism.
      *

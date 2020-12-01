@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.acreath.starter.threadpool.config.ThreadPoolAutoConfiguration
+  com.github.kurtloong.config.ThreadPoolAutoConfiguration

@@ -1,4 +1,4 @@
-package com.acreath.starter.threadpool;
+package com.github.kurtloong;
 
 
 
@@ -14,7 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 继承ThreadPoolExecutor类，覆盖了shutdown(), shutdownNow(), beforeExecute() 和 afterExecute()
  * 方法来统计线程池的执行情况
- * <p>
+ *
  */
 public class ThreadPoolMonitor extends ThreadPoolExecutor {
 

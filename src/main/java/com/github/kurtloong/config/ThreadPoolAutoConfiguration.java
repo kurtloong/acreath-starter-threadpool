@@ -1,7 +1,7 @@
-package com.acreath.starter.threadpool.config;
+package com.github.kurtloong.config;
 
-import com.acreath.starter.threadpool.endpoint.ThreadPoolEndpoint;
-import com.acreath.starter.threadpool.util.ThreadPoolUtil;
+import com.github.kurtloong.endpoint.ThreadPoolEndpoint;
+import com.github.kurtloong.util.ThreadPoolUtil;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;

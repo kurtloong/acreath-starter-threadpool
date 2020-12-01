@@ -1,4 +1,4 @@
-package com.acreath.starter.threadpool.entity;
+package com.github.kurtloong.entity;
 
 /**
  * The type Thread pool detail info.

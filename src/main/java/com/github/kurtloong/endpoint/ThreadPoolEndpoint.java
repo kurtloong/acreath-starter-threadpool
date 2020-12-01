@@ -1,11 +1,9 @@
-package com.acreath.starter.threadpool.endpoint;
+package com.github.kurtloong.endpoint;
 
-import com.acreath.starter.threadpool.entity.ThreadPoolDetailInfo;
-import com.acreath.starter.threadpool.queue.ResizeableBlockingQueue;
-import com.acreath.starter.threadpool.entity.ThreadPoolInfo;
-import com.acreath.starter.threadpool.util.ThreadPoolUtil;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.github.kurtloong.entity.ThreadPoolDetailInfo;
+import com.github.kurtloong.queue.ResizeableBlockingQueue;
+import com.github.kurtloong.entity.ThreadPoolInfo;
+import com.github.kurtloong.util.ThreadPoolUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.actuate.endpoint.web.annotation.RestControllerEndpoint;
 import org.springframework.stereotype.Component;
