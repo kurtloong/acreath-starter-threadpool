@@ -88,7 +88,8 @@
     ]
 	```
 6. 查看线程池参数
-http://localhost/actuator/threadpool/getThreadPoolFixInfo?threadPoolName=asyncExecutor //GET请求
+
+	http://localhost/actuator/threadpool/getThreadPoolFixInfo?threadPoolName=asyncExecutor //GET请求
 
 	参数:
 
@@ -108,7 +109,8 @@ http://localhost/actuator/threadpool/getThreadPoolFixInfo?threadPoolName=asyncEx
 		 }
 	```
 
-7. 修改线程池参数
+8. 修改线程池参数
+
 	https://localhost/actuator/threadpool/setThreadPoolInfo  //Post请求
 
 	参数:
