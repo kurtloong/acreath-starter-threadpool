@@ -109,7 +109,7 @@ public class ThreadPoolEndpoint {
         return new ThreadPoolDetailInfo(threadPoolName,threadPool.getPoolSize(), threadPool.getCorePoolSize(),
                 threadPool.getLargestPoolSize(), threadPool.getMaximumPoolSize(), threadPool.getCompletedTaskCount(),
                 threadPool.getActiveCount(),threadPool.getQueue().size(),threadPool.getKeepAliveTime(TimeUnit.MILLISECONDS),
-                numberFormat.format(result.doubleValue()),queueCapacity);
+                numberFormat.format(result.doubleValue()),queueCapacity,threadPool.getQueue().size());
     }
 
 

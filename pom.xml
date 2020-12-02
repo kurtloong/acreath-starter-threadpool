@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.github.kurtloong</groupId>
     <artifactId>acreath-starter-threadpool</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.4-RELEASE</version>
     <name>acreath-starter-threadpool</name>
     <description>Demo project for Spring Boot</description>
 

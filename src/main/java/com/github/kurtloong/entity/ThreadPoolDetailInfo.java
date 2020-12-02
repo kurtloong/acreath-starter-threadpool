@@ -1,5 +1,4 @@
 package com.github.kurtloong.entity;
-
 /**
  * The type Thread pool detail info.
  */
@@ -15,6 +14,7 @@ public class ThreadPoolDetailInfo {
     private long keepAliveTime;
     private String activePercent;
     private Integer queueCapacity;
+    private Integer queueSize;
 
     /**
      * Instantiates a new Thread pool detail info.
@@ -30,8 +30,9 @@ public class ThreadPoolDetailInfo {
      * @param keepAliveTime      the keep alive time
      * @param activePercent      the active percent
      * @param queueCapacity      the queue capacity
+     * @param queueSize          the queue size
      */
-    public ThreadPoolDetailInfo(String threadPoolName, Integer poolSize, Integer corePoolSize, Integer largestPoolSize, Integer maximumPoolSize, long completedTaskCount, Integer active, Integer task, long keepAliveTime, String activePercent, Integer queueCapacity) {
+    public ThreadPoolDetailInfo(String threadPoolName, Integer poolSize, Integer corePoolSize, Integer largestPoolSize, Integer maximumPoolSize, long completedTaskCount, Integer active, Integer task, long keepAliveTime, String activePercent, Integer queueCapacity, Integer queueSize) {
         this.threadPoolName = threadPoolName;
         this.poolSize = poolSize;
         this.corePoolSize = corePoolSize;
@@ -43,6 +44,7 @@ public class ThreadPoolDetailInfo {
         this.keepAliveTime = keepAliveTime;
         this.activePercent = activePercent;
         this.queueCapacity = queueCapacity;
+        this.queueSize = queueSize;
     }
 
     /**
@@ -242,4 +244,23 @@ public class ThreadPoolDetailInfo {
     public void setQueueCapacity(Integer queueCapacity) {
         this.queueCapacity = queueCapacity;
     }
+
+    /**
+     * Gets queue size.
+     *
+     * @return the queue size
+     */
+    public Integer getQueueSize() {
+        return queueSize;
+    }
+
+    /**
+     * Sets queue size.
+     *
+     * @param queueSize the queue size
+     */
+    public void setQueueSize(Integer queueSize) {
+        this.queueSize = queueSize;
+    }
 }
+
