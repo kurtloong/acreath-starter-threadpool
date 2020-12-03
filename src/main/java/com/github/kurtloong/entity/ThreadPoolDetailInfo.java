@@ -1,4 +1,5 @@
 package com.github.kurtloong.entity;
+
 /**
  * The type Thread pool detail info.
  */
@@ -15,6 +16,7 @@ public class ThreadPoolDetailInfo {
     private String activePercent;
     private Integer queueCapacity;
     private Integer queueSize;
+    private long avgDiff;
 
     /**
      * Instantiates a new Thread pool detail info.
@@ -31,8 +33,9 @@ public class ThreadPoolDetailInfo {
      * @param activePercent      the active percent
      * @param queueCapacity      the queue capacity
      * @param queueSize          the queue size
+     * @param avgDiff            the avg diff
      */
-    public ThreadPoolDetailInfo(String threadPoolName, Integer poolSize, Integer corePoolSize, Integer largestPoolSize, Integer maximumPoolSize, long completedTaskCount, Integer active, long task, long keepAliveTime, String activePercent, Integer queueCapacity, Integer queueSize) {
+    public ThreadPoolDetailInfo(String threadPoolName, Integer poolSize, Integer corePoolSize, Integer largestPoolSize, Integer maximumPoolSize, long completedTaskCount, Integer active, long task, long keepAliveTime, String activePercent, Integer queueCapacity, Integer queueSize, long avgDiff) {
         this.threadPoolName = threadPoolName;
         this.poolSize = poolSize;
         this.corePoolSize = corePoolSize;
@@ -45,6 +48,7 @@ public class ThreadPoolDetailInfo {
         this.activePercent = activePercent;
         this.queueCapacity = queueCapacity;
         this.queueSize = queueSize;
+        this.avgDiff = avgDiff;
     }
 
     /**
@@ -261,6 +265,24 @@ public class ThreadPoolDetailInfo {
      */
     public void setQueueSize(Integer queueSize) {
         this.queueSize = queueSize;
+    }
+
+    /**
+     * Gets avg diff.
+     *
+     * @return the avg diff
+     */
+    public long getAvgDiff() {
+        return avgDiff;
+    }
+
+    /**
+     * Sets avg diff.
+     *
+     * @param avgDiff the avg diff
+     */
+    public void setAvgDiff(long avgDiff) {
+        this.avgDiff = avgDiff;
     }
 }
 

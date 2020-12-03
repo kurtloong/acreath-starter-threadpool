@@ -1,5 +1,6 @@
 package com.github.kurtloong.endpoint;
 
+import com.github.kurtloong.ThreadPoolMonitor;
 import com.github.kurtloong.entity.ThreadPoolDetailInfo;
 import com.github.kurtloong.queue.ResizeableBlockingQueue;
 import com.github.kurtloong.entity.ThreadPoolInfo;
@@ -37,7 +38,7 @@ public class ThreadPoolEndpoint {
     private List<String> getThreadPools (){
         List<String> threadPools = new ArrayList<>();
         if (!threadPoolUtil.getThreadPoolExecutorHashMap().isEmpty()){
-            for (Map.Entry<String, ThreadPoolExecutor> entry : threadPoolUtil.getThreadPoolExecutorHashMap().entrySet()) {
+            for (Map.Entry<String, ThreadPoolMonitor> entry : threadPoolUtil.getThreadPoolExecutorHashMap().entrySet()) {
                 threadPools.add(entry.getKey());
             }
         }
@@ -47,7 +48,7 @@ public class ThreadPoolEndpoint {
     @GetMapping("getThreadPoolFixInfo")
     private ThreadPoolInfo getThreadPoolInfo(@RequestParam String threadPoolName){
         if (threadPoolUtil.getThreadPoolExecutorHashMap().containsKey(threadPoolName)){
-            ThreadPoolExecutor threadPoolExecutor = threadPoolUtil.getThreadPoolExecutorHashMap().get(threadPoolName);
+            ThreadPoolMonitor threadPoolExecutor = threadPoolUtil.getThreadPoolExecutorHashMap().get(threadPoolName);
             int queueCapacity = 0;
             if (RESIZEABLE_BLOCKING_QUEUE.equals(threadPoolExecutor.getQueue().getClass().getSimpleName())){
                 ResizeableBlockingQueue queue = (ResizeableBlockingQueue) threadPoolExecutor.getQueue();
@@ -64,7 +65,7 @@ public class ThreadPoolEndpoint {
         if (threadPoolUtil.getThreadPoolExecutorHashMap().containsKey(threadPoolInfo.getThreadPoolName())){
             LOCK.lock();
             try {
-                ThreadPoolExecutor threadPoolExecutor = threadPoolUtil.getThreadPoolExecutorHashMap().get(threadPoolInfo.getThreadPoolName());
+                ThreadPoolMonitor threadPoolExecutor = threadPoolUtil.getThreadPoolExecutorHashMap().get(threadPoolInfo.getThreadPoolName());
                 threadPoolExecutor.setMaximumPoolSize(threadPoolInfo.getMaximumPoolSize());
                 threadPoolExecutor.setCorePoolSize(threadPoolInfo.getCorePoolSize());
                 if (RESIZEABLE_BLOCKING_QUEUE.equals(threadPoolExecutor.getQueue().getClass().getSimpleName())){
@@ -87,7 +88,7 @@ public class ThreadPoolEndpoint {
     private List<ThreadPoolDetailInfo> getThreadPoolListInfo(){
         List<ThreadPoolDetailInfo> detailInfoList = new ArrayList<>();
         if (!threadPoolUtil.getThreadPoolExecutorHashMap().isEmpty()){
-            for (Map.Entry<String, ThreadPoolExecutor> entry : threadPoolUtil.getThreadPoolExecutorHashMap().entrySet()) {
+            for (Map.Entry<String, ThreadPoolMonitor> entry : threadPoolUtil.getThreadPoolExecutorHashMap().entrySet()) {
                 ThreadPoolDetailInfo threadPoolDetailInfo = threadPoolInfo(entry.getValue(),entry.getKey());
                 detailInfoList.add(threadPoolDetailInfo);
             }
@@ -95,7 +96,7 @@ public class ThreadPoolEndpoint {
         return  detailInfoList;
     }
 
-    private  ThreadPoolDetailInfo threadPoolInfo(ThreadPoolExecutor threadPool,String threadPoolName) {
+    private  ThreadPoolDetailInfo threadPoolInfo(ThreadPoolMonitor threadPool,String threadPoolName) {
         BigDecimal activeCount = new BigDecimal(threadPool.getActiveCount());
         BigDecimal maximumPoolSize = new BigDecimal(threadPool.getMaximumPoolSize());
         BigDecimal  result =activeCount.divide(maximumPoolSize, 2, BigDecimal.ROUND_HALF_UP);
@@ -109,7 +110,7 @@ public class ThreadPoolEndpoint {
         return new ThreadPoolDetailInfo(threadPoolName,threadPool.getPoolSize(), threadPool.getCorePoolSize(),
                 threadPool.getLargestPoolSize(), threadPool.getMaximumPoolSize(), threadPool.getCompletedTaskCount(),
                 threadPool.getActiveCount(),threadPool.getTaskCount(),threadPool.getKeepAliveTime(TimeUnit.MILLISECONDS),
-                numberFormat.format(result.doubleValue()),queueCapacity,threadPool.getQueue().size());
+                numberFormat.format(result.doubleValue()),queueCapacity,threadPool.getQueue().size(),threadPool.getTotalDiff()/threadPool.getTaskCount());
     }
 
 
