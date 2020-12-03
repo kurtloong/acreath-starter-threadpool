@@ -10,7 +10,7 @@ public class ThreadPoolDetailInfo {
     private Integer maximumPoolSize;
     private long completedTaskCount;
     private Integer active;
-    private Integer task;
+    private long task;
     private long keepAliveTime;
     private String activePercent;
     private Integer queueCapacity;
@@ -32,7 +32,7 @@ public class ThreadPoolDetailInfo {
      * @param queueCapacity      the queue capacity
      * @param queueSize          the queue size
      */
-    public ThreadPoolDetailInfo(String threadPoolName, Integer poolSize, Integer corePoolSize, Integer largestPoolSize, Integer maximumPoolSize, long completedTaskCount, Integer active, Integer task, long keepAliveTime, String activePercent, Integer queueCapacity, Integer queueSize) {
+    public ThreadPoolDetailInfo(String threadPoolName, Integer poolSize, Integer corePoolSize, Integer largestPoolSize, Integer maximumPoolSize, long completedTaskCount, Integer active, long task, long keepAliveTime, String activePercent, Integer queueCapacity, Integer queueSize) {
         this.threadPoolName = threadPoolName;
         this.poolSize = poolSize;
         this.corePoolSize = corePoolSize;
@@ -178,7 +178,7 @@ public class ThreadPoolDetailInfo {
      *
      * @return the task
      */
-    public Integer getTask() {
+    public long getTask() {
         return task;
     }
 
@@ -187,7 +187,7 @@ public class ThreadPoolDetailInfo {
      *
      * @param task the task
      */
-    public void setTask(Integer task) {
+    public void setTask(long task) {
         this.task = task;
     }
 
