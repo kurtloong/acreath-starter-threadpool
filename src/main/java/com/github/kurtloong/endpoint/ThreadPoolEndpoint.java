@@ -34,6 +34,11 @@ public class ThreadPoolEndpoint {
 
     private static final String RESIZEABLE_BLOCKING_QUEUE = "ResizeableBlockingQueue";
 
+
+    /**
+     * getThreadPools
+     * 获取当前所有线程池的线程名称
+     */
     @GetMapping("getThreadPools")
     private List<String> getThreadPools (){
         List<String> threadPools = new ArrayList<>();
@@ -45,6 +50,11 @@ public class ThreadPoolEndpoint {
         return threadPools;
     }
 
+    /**
+     * 获取线程池可变参数信息
+     * @param threadPoolName
+     * @return
+     */
     @GetMapping("getThreadPoolFixInfo")
     private ThreadPoolInfo getThreadPoolInfo(@RequestParam String threadPoolName){
         if (threadPoolUtil.getThreadPoolExecutorHashMap().containsKey(threadPoolName)){
@@ -60,6 +70,12 @@ public class ThreadPoolEndpoint {
         return null;
     }
 
+
+    /**
+     * 修改线程池配置
+     * @param threadPoolInfo
+     * @return
+     */
     @PostMapping("setThreadPoolFixInfo")
     private Boolean setThreadPoolInfo(@RequestBody ThreadPoolInfo threadPoolInfo){
         if (threadPoolUtil.getThreadPoolExecutorHashMap().containsKey(threadPoolInfo.getThreadPoolName())){
@@ -84,6 +100,10 @@ public class ThreadPoolEndpoint {
         return false;
     }
 
+    /**
+     * 获取线程池监控信息
+     * @return
+     */
     @GetMapping("getThreadPoolListInfo")
     private List<ThreadPoolDetailInfo> getThreadPoolListInfo(){
         List<ThreadPoolDetailInfo> detailInfoList = new ArrayList<>();
@@ -96,6 +116,12 @@ public class ThreadPoolEndpoint {
         return  detailInfoList;
     }
 
+    /**
+     * 组装线程池详情
+     * @param threadPool
+     * @param threadPoolName
+     * @return
+     */
     private  ThreadPoolDetailInfo threadPoolInfo(ThreadPoolMonitor threadPool,String threadPoolName) {
         BigDecimal activeCount = new BigDecimal(threadPool.getActiveCount());
         BigDecimal maximumPoolSize = new BigDecimal(threadPool.getMaximumPoolSize());

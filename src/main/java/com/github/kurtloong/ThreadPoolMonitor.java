@@ -1,7 +1,6 @@
 package com.github.kurtloong;
 
 
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,7 +13,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * 继承ThreadPoolExecutor类，覆盖了shutdown(), shutdownNow(), beforeExecute() 和 afterExecute()
  * 方法来统计线程池的执行情况
- *
  */
 public class ThreadPoolMonitor extends ThreadPoolExecutor {
 
@@ -121,26 +119,6 @@ public class ThreadPoolMonitor extends ThreadPoolExecutor {
                 this.getMaximumPoolSize(), this.getKeepAliveTime(TimeUnit.MILLISECONDS), this.isShutdown(), this.isTerminated());
     }
 
-    /**
-     * 创建固定线程池，代码源于Executors.newFixedThreadPool方法，这里增加了poolName
-     *
-     * @param nThreads 线程数量
-     * @param poolName 线程池名称
-     * @return ExecutorService对象
-     */
-    public static ExecutorService newFixedThreadPool(int nThreads, String poolName) {
-        return new ThreadPoolMonitor(nThreads, nThreads, 0L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue<>(), poolName);
-    }
-
-    /**
-     * 创建缓存型线程池，代码源于Executors.newCachedThreadPool方法，这里增加了poolName
-     *
-     * @param poolName 线程池名称
-     * @return ExecutorService对象
-     */
-    public static ExecutorService newCachedThreadPool(String poolName) {
-        return new ThreadPoolMonitor(0, Integer.MAX_VALUE, 60L, TimeUnit.SECONDS, new SynchronousQueue<>(), poolName);
-    }
 
     /**
      * 生成线程池所用的线程，只是改写了线程池默认的线程工厂，传入线程池名称，便于问题追踪
