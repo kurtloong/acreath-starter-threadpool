@@ -136,7 +136,7 @@ public class ThreadPoolEndpoint {
         return new ThreadPoolDetailInfo(threadPoolName,threadPool.getPoolSize(), threadPool.getCorePoolSize(),
                 threadPool.getLargestPoolSize(), threadPool.getMaximumPoolSize(), threadPool.getCompletedTaskCount(),
                 threadPool.getActiveCount(),threadPool.getTaskCount(),threadPool.getKeepAliveTime(TimeUnit.MILLISECONDS),
-                numberFormat.format(result.doubleValue()),queueCapacity,threadPool.getQueue().size(),threadPool.getTotalDiff()/threadPool.getTaskCount());
+                numberFormat.format(result.doubleValue()),queueCapacity,threadPool.getQueue().size(),threadPool.getTaskCount() == 0?0:threadPool.getTotalDiff()/threadPool.getTaskCount());
     }
 
 
